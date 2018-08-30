@@ -26,10 +26,11 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-// jmenuBar --> Å¬·¡½º °´Ã¼¸¦ ¸¸µé¾î¼­ ±×°ÍÀ»
-// Á¦ÀÌ ¸Ş´º¹Ù¸¦ addÇØ¼­ jframe¿¡ ºÙÀÌ±â 
-// file-> jmenu --> jmenubar¿¡ ºÙÀÌ±â
-// file--[save,load,exit] jmenuitemÀÇ 3 °´Ã¼ --> jmunu¿¡ ºÙÀÌ±â
+
+// jmenuBar --> í´ë˜ìŠ¤ ê°ì²´ë¥¼ ë§Œë“¤ì–´ì„œ ê·¸ê²ƒì„
+// ì œì´ ë©”ë‰´ë°”ë¥¼ addí•´ì„œ jframeì— ë¶™ì´ê¸° 
+// file-> jmenu --> jmenubarì— ë¶™ì´ê¸°
+// file--[save,load,exit] jmenuitemì˜ 3 ê°ì²´ --> jmunuì— ë¶™ì´ê¸°
 
 class myFrame extends JFrame implements Serializable {
 
@@ -40,8 +41,8 @@ class myFrame extends JFrame implements Serializable {
 	private JButton btn3;
 	private Color btnColor;
 
-	Font font = new Font("°íµñ", Font.BOLD, 50);
-	Font font2 = new Font("°íµñ", Font.BOLD, 200);
+	Font font = new Font("ê³ ë”•", Font.BOLD, 50);
+	Font font2 = new Font("ê³ ë”•", Font.BOLD, 200);
 
 	private JButton buttonCliked;
 	Box<Shape> shapeList = new Box<>();
@@ -101,54 +102,54 @@ class myFrame extends JFrame implements Serializable {
 		}
 	}
 
-	// »ı¼ºÀÚ
+	// Generator
 	myFrame() {
 
 		JMenuBar jmb = new JMenuBar();
-		JMenu jm = new JMenu("file");  //ÆÄÀÏ ¸Ş´º
-		JMenu cl = new JMenu("color"); //»ö±ò ¸Ş´º 
+		JMenu jm = new JMenu("file");  //íŒŒì¼ ë©”ë‰´
+		JMenu cl = new JMenu("color"); //ìƒ‰ê¹” ë©”ë‰´ 
 		jmb.add(jm)/* .setFont(font2) */;
 		jmb.add(cl);
-		JMenuItem jmiSave = new JMenuItem("Save");  //ÆÄÀÏ ¸Ş´º¿¡ ¼ÓÇÏ´Â ¸®½ºÆ®µé
+		JMenuItem jmiSave = new JMenuItem("Save");  //íŒŒì¼ ë©”ë‰´ì— ì†í•˜ëŠ” ë¦¬ìŠ¤íŠ¸ë“¤
 		JMenuItem jmiLoad = new JMenuItem("Load");
 		JMenuItem jmiExit = new JMenuItem("Exit");
 
-		JMenuItem jmiRed = new JMenuItem("red");  //»ö±ò ¸Ş´º¿¡ ¼ÓÇÏ´Â ¸®½ºÆ®µé 
+		JMenuItem jmiRed = new JMenuItem("red");  //ìƒ‰ê¹” ë©”ë‰´ì— ì†í•˜ëŠ” ë¦¬ìŠ¤íŠ¸ë“¤ 
 		JMenuItem jmiBlue = new JMenuItem("blue");
 		JMenuItem jmiGreen = new JMenuItem("green");
 
 		
 		jm.add(jmiSave)/* .setFont(font2) */;
-		jm.addSeparator(); // ¹öÆ°³¢¸® ±¸ºĞ Áş´Â ¼±
+		jm.addSeparator(); // ë²„íŠ¼ë¼ë¦¬ êµ¬ë¶„ ì§“ëŠ” ì„ 
 		jm.add(jmiLoad)/* .setFont(font2) */;
 		jm.addSeparator();
 		jm.add(jmiExit)/* .setFont(font2) */;
 
 		cl.add(jmiRed)/* .setFont(font2) */;
-		cl.addSeparator(); // ¹öÆ°³¢¸® ±¸ºĞ Áş´Â ¼±
+		cl.addSeparator(); // ë²„íŠ¼ë¼ë¦¬ êµ¬ë¶„ ì§“ëŠ” ì„ 
 		cl.add(jmiBlue)/* .setFont(font2) */;
 		cl.addSeparator();
 		cl.add(jmiGreen)/* .setFont(font2) */;
 
 				 
 		
-		// ÀúÀåÇÏ±â ¹öÆ° ´­·¶À» ¶§
+		// When the Save button is pressed
 		jmiSave.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 
 				try {
-					String fileName = JOptionPane.showInputDialog("ÀúÀåÇÒ ÆÄÀÏ¸íÀ» ÀÔ·ÂÇÏ½Ã¿À ");
+					String fileName = JOptionPane.showInputDialog("ì €ì¥í•  íŒŒì¼ëª…ì„ ì…ë ¥í•˜ì‹œì˜¤ ");
 
-					// °´Ã¼¸¦ ÆÄÀÏ·Î Á÷·ÄÈ­ ÇÏ±â . ÆÄÀÏ ÀúÀåµÉ À§Ä¡ ÀÎ¼ö·Î ¹Ş¾Æ¼­ °´Ã¼ »ı¼º
-					// FileOutputStream : ¹®ÀÚ¸¦ ¹ÙÀÌÆ® ÆÄÀÏ·Î º¯È¯ ÇÏ´Â ¿ªÇÒ
+					// ê°ì²´ë¥¼ íŒŒì¼ë¡œ ì§ë ¬í™” í•˜ê¸° . íŒŒì¼ ì €ì¥ë  ìœ„ì¹˜ ì¸ìˆ˜ë¡œ ë°›ì•„ì„œ ê°ì²´ ìƒì„±
+					// FileOutputStream : ë¬¸ìë¥¼ ë°”ì´íŠ¸ íŒŒì¼ë¡œ ë³€í™˜ í•˜ëŠ” ì—­í• 
 					FileOutputStream fow = new FileOutputStream(
 							"C:\\javaFile\\newJava\\gurimpan\\" + fileName + ".txt");
-					// ÀÛ·ÄÈ­ ÇÏ±â À§ÇØ....
+					// ì‘ë ¬í™” í•˜ê¸° ìœ„í•´....
 					ObjectOutputStream out = new ObjectOutputStream(fow);
 
-					// Á÷·ÄÈ­ ¸¸µå´Â ÇÔ¼ö
+					// ì§ë ¬í™” ë§Œë“œëŠ” í•¨ìˆ˜
 					out.writeObject(shapeList);
 					out.close();
 				} catch (Exception e) {
@@ -159,7 +160,7 @@ class myFrame extends JFrame implements Serializable {
 			}
 		});
 
-		// ÀúÀåµÈ ÆÄÀÏ ·ÎµåÇÏ±â
+		// Loading Saved Files
 		jmiLoad.addActionListener(new ActionListener() {
 
 			@SuppressWarnings("unchecked")
@@ -167,9 +168,9 @@ class myFrame extends JFrame implements Serializable {
 			public void actionPerformed(ActionEvent e) {
 				try {
 
-					String fileName = JOptionPane.showInputDialog("ºÒ·¯¿Ã ÆÄÀÏ¸íÀ» ÀÔ·ÂÇÏ½Ã¿À ");
+					String fileName = JOptionPane.showInputDialog("ë¶ˆëŸ¬ì˜¬ íŒŒì¼ëª…ì„ ì…ë ¥í•˜ì‹œì˜¤ ");
 
-					// FileInputStream : ÆÄÀÏ¿¡¼­ ¹ÙÀÌÆ®¸¦ ÀĞ¾îµé¿© ¹®ÀÚ·Î º¯È¯
+					// FileInputStream : íŒŒì¼ì—ì„œ ë°”ì´íŠ¸ë¥¼ ì½ì–´ë“¤ì—¬ ë¬¸ìë¡œ ë³€í™˜
 					FileInputStream fiw = new FileInputStream("C:\\javaFile\\newJava\\gurimpan\\" + fileName + ".txt");
 					ObjectInputStream in = new ObjectInputStream(fiw);
 
@@ -189,7 +190,7 @@ class myFrame extends JFrame implements Serializable {
 			}
 		});
 		
-		//»¡°£»ö ¹öÆ°À» ´­·¶À» °æ¿ì 
+		// When the red button is pressed
 		jmiRed.addActionListener(new ActionListener() {
 
 			@Override
@@ -206,14 +207,14 @@ class myFrame extends JFrame implements Serializable {
 		leftPanel = new JPanel();
 		rightPanel = new RightPanelC();
 
-		this.add(leftPanel); // ÄÄÆ÷³ÍÆ® Ãß°¡
+		this.add(leftPanel); // ì»´í¬ë„ŒíŠ¸ ì¶”ê°€
 		this.add(rightPanel);
 
 		leftPanel.setLayout(new GridLayout(3, 0));
 
-		btn1 = new JButton(" ¼± ±×¸®±â ");
-		btn2 = new JButton(" »ç°¢Çü ±×¸®±â ");
-		btn3 = new JButton(" ¿ø ±×¸®±â ");
+		btn1 = new JButton(" ì„  ê·¸ë¦¬ê¸° ");
+		btn2 = new JButton(" ì‚¬ê°í˜• ê·¸ë¦¬ê¸° ");
+		btn3 = new JButton(" ì› ê·¸ë¦¬ê¸° ");
 
 		btnColor = btn1.getBackground();
 		btnColor = btn2.getBackground();
@@ -230,20 +231,20 @@ class myFrame extends JFrame implements Serializable {
 		//
 	}
 
-	// ±âº» Æ²
+	// a basic framework
 	public void basic() {
 
 		this.setSize(1100, 1100);
-		this.setTitle("DH's ±×¸²ÆÇ");
+		this.setTitle("DH's ê·¸ë¦¼íŒ");
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
 
-	// ¸®½º³Ê »ı¼º
+	// Create Leiner
 	public void createListner() {
 
-		// ¹öÆ° 1¹ø ´­·¶À» °æ¿ì
+		// ë²„íŠ¼ 1ë²ˆ ëˆŒë €ì„ ê²½ìš°
 		this.btn1.addActionListener(new ActionListener() {
 			
 			@Override
@@ -260,7 +261,7 @@ class myFrame extends JFrame implements Serializable {
 			}
 		});
 
-		// ¹öÆ° 2¹ø ´­·¶À» °æ¿ì
+		// ë²„íŠ¼ 2ë²ˆ ëˆŒë €ì„ ê²½ìš°
 		this.btn2.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -275,7 +276,7 @@ class myFrame extends JFrame implements Serializable {
 
 		});
 
-		// ¹öÆ° 3¹ø ´­·¶À» °æ¿ì
+		// ë²„íŠ¼ 3ë²ˆ ëˆŒë €ì„ ê²½ìš°
 		this.btn3.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -291,7 +292,7 @@ class myFrame extends JFrame implements Serializable {
 		});
 	}
 
-	// ÀÌ³Ê Å¬·¡½º
+	// Inner class
 	class RightPanelC extends JPanel {
 
          
@@ -299,7 +300,7 @@ class myFrame extends JFrame implements Serializable {
 
 			this.addMouseListener(new MouseAdapter() {
 
-				// ÇÁ·¹½ºµå,¸±¸®Áî(¸¶Áö¸·À§Ä¡)
+				// í”„ë ˆìŠ¤ë“œ,ë¦´ë¦¬ì¦ˆ(ë§ˆì§€ë§‰ìœ„ì¹˜)
 				public void mousePressed(MouseEvent e) {
 					if (buttonCliked == btn1) {
                         startPx=e.getX();
@@ -310,7 +311,7 @@ class myFrame extends JFrame implements Serializable {
 				public void mouseReleased(MouseEvent e) {
 					if (buttonCliked == btn1) {
 
-						endPx = e.getX(); // µå·¡±× ÇÑ ºÎºĞÀ» Á¾·áÁ¡
+						endPx = e.getX(); // ë“œë˜ê·¸ í•œ ë¶€ë¶„ì„ ì¢…ë£Œì 
 						endPy = e.getY();
 						
 						Graphics g = rightPanel.getGraphics();
@@ -342,9 +343,9 @@ class myFrame extends JFrame implements Serializable {
 
 		}
 	
-		// ÀúÀåµÈ Á¤º¸µéÀ» °¡Á®¿À±â .... ! Vector ~
+		// Import stored information .... ! Vector ~
 		public void paintComponent(Graphics g) {
-			super.paintComponent(g); // ºÎ¸ğ ÆäÀÎÆ® È£Ãâ
+			super.paintComponent(g); // ë¶€ëª¨ í˜ì¸íŠ¸ í˜¸ì¶œ
 
 			for (int i = 0; i < shapeList.size(); i++) {
 
@@ -368,17 +369,17 @@ class myFrame extends JFrame implements Serializable {
 		}
 	}
 
-	// ============== ³»·È´Ù°¡ ¿Ã·Áµµ ±× »óÅÂ ±×´ë·Î....!=================
+	// ============== ë‚´ë ¸ë‹¤ê°€ ì˜¬ë ¤ë„ ê·¸ ìƒíƒœ ê·¸ëŒ€ë¡œ....!=================
 
-	// 1. (rightPanel) µµÇü±×¸±¶§¸¶´Ù ÀúÀå ÇÏ±â.
-	// -----> 1) ±×¸² ±×·ÁÁú ¶§¸¶´Ù ±× µµÇü¿¡´ëÇÑ Á¤º¸¸¦ ÀúÀå... °´Ã¼·Î ! Å¬·¡½º Á¤ÀÇ¸¦ ÇÒ°Í
-	// (°øÅëÁ¡ : Ã¹ ½ÃÀÛÁ¡ÀÌ Á¸ÀçÇÑ´Ù. ÀÌ µµÇüÀÇ ¾ÆÀÌµğ ) ------ ´ÙÇü¼ºÀ» ÀÌ¿ëÇØ¼­ ... !
-	// ¼­·Î´Ù¸¥ µµÇüµéÀ» °´Ã¼¿¡ Á¤ÀÇ ÇÑ´Ù.
+	// 1. (rightPanel) ë„í˜•ê·¸ë¦´ë•Œë§ˆë‹¤ ì €ì¥ í•˜ê¸°.
+	// -----> 1) ê·¸ë¦¼ ê·¸ë ¤ì§ˆ ë•Œë§ˆë‹¤ ê·¸ ë„í˜•ì—ëŒ€í•œ ì •ë³´ë¥¼ ì €ì¥... ê°ì²´ë¡œ ! í´ë˜ìŠ¤ ì •ì˜ë¥¼ í• ê²ƒ
+	// (ê³µí†µì  : ì²« ì‹œì‘ì ì´ ì¡´ì¬í•œë‹¤. ì´ ë„í˜•ì˜ ì•„ì´ë”” ) ------ ë‹¤í˜•ì„±ì„ ì´ìš©í•´ì„œ ... !
+	// ì„œë¡œë‹¤ë¥¸ ë„í˜•ë“¤ì„ ê°ì²´ì— ì •ì˜ í•œë‹¤.
 
-	// ¼¼ ´Ù¸¥ °ÍÁß¿¡¼­ °øÅëÁ¡ÀÌ Á¸ÀçÇÑ´Ù.... ¿©±â¼­ »ó¼ÓÀÌ ÇÊ¿äÇÏ´Ù !
-	// -----> 2) ¹Ì¸® Á¤ÀÇµÈ °´Ã¼¸¦ °¡Áö°í ¹è¿­¿¡ ÀúÀåÇÑ´Ù .
+	// ì„¸ ë‹¤ë¥¸ ê²ƒì¤‘ì—ì„œ ê³µí†µì ì´ ì¡´ì¬í•œë‹¤.... ì—¬ê¸°ì„œ ìƒì†ì´ í•„ìš”í•˜ë‹¤ !
+	// -----> 2) ë¯¸ë¦¬ ì •ì˜ëœ ê°ì²´ë¥¼ ê°€ì§€ê³  ë°°ì—´ì— ì €ì¥í•œë‹¤ .
 
-	// 2. ÀúÀåµÈ Á¤º¸µéÀ» °¡Á®¿Í¼­ »õ·Ó°Ô ±×·ÁÁÖ±â.---> ¶óÀÌÆ® ÆÇ³Ú¿¡¼­ ±×·ÁÁÖ¶ó
+	// 2. ì €ì¥ëœ ì •ë³´ë“¤ì„ ê°€ì ¸ì™€ì„œ ìƒˆë¡­ê²Œ ê·¸ë ¤ì£¼ê¸°.---> ë¼ì´íŠ¸ íŒë„¬ì—ì„œ ê·¸ë ¤ì£¼ë¼
 
 }
 
