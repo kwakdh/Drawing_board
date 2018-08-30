@@ -20,14 +20,14 @@ public class MyDrawing extends JFrame {
 	 
 	 JPanel p1,p2;
 	 JButton btR, btG, btB, btOpen;
-	 Canvas can; // ºÎ¸ğÅ¸ÀÔ
+	 Canvas can; // ë¶€ëª¨íƒ€ì…
 	 PaintToolFrame pt;
 	 
 	 public MyDrawing(){
 	  super("::MyDrawing::");
 	  pt=new PaintToolFrame();
 	  p1=new JPanel(); add(p1, "North");
-	  p2=new JPanel(){ // ¿©¹éÁÖ±â
+	  p2=new JPanel(){ // ì—¬ë°±ì£¼ê¸°
 	  public Insets getInsets(){
 	  return new Insets(40,10,10,10);
 	   }
@@ -39,20 +39,20 @@ public class MyDrawing extends JFrame {
 	  btB=new JButton(new ImageIcon("./images/blue.png")); p1.add(btB);
 	  btOpen=new JButton("Paint Tool"); p1.add(btOpen);
 	  
-	  can=new MyCanvas(); // µµÈ­Áö ¿ªÇÒÀ» ÇÏ´Â ÄÄÆ÷³ÍÆ® MyCanvas´Â canÀ» »ó¼Ó ¹Ş´Â ÀÚ½Ä->¿øÀÌ °©ÀÚ±â »ı±è
-	  can.setSize(300, 300); // µµÈ­Áö Å©±â
-	  can.setBackground(Color.white); // µµÈ­Áö ¹è°æ»ö ÁÖ±â
+	  can=new MyCanvas(); // ë„í™”ì§€ ì—­í• ì„ í•˜ëŠ” ì»´í¬ë„ŒíŠ¸ MyCanvasëŠ” canì„ ìƒì† ë°›ëŠ” ìì‹->ì›ì´ ê°‘ìê¸° ìƒê¹€
+	  can.setSize(300, 300); // ë„í™”ì§€ í¬ê¸°
+	  can.setBackground(Color.white); // ë„í™”ì§€ ë°°ê²½ìƒ‰ ì£¼ê¸°
 	  p2.add(can);
 	  
-	  //¸®½º³Ê ºÎÂø -------------------
+	  //------------------ Attaching a listener -------------------
 	  MyHandler my=new MyHandler();
-	  can.addMouseMotionListener(my); // Äµ¹ö½º °´Ã¼¿¡ ¸¶¿ì½º¸ğ¼Ç¸®½º³Ê¸¦ ºÎÂøÇÑ´Ù.
+	  can.addMouseMotionListener(my); // ìº”ë²„ìŠ¤ ê°ì²´ì— ë§ˆìš°ìŠ¤ëª¨ì…˜ë¦¬ìŠ¤ë„ˆë¥¼ ë¶€ì°©í•œë‹¤.
 	  btR.addActionListener(my);
 	  btG.addActionListener(my);
 	  btB.addActionListener(my);
 	  btOpen.addActionListener(my);
 	    
-	  //pt¹öÆ°(PaintToolFrame Å¬·¡½º²¨)¿¡µµ ¸®½º³Ê¸¦ ºÎÂøÇÏÀÚ
+	  //ptë²„íŠ¼(PaintToolFrame í´ë˜ìŠ¤êº¼)ì—ë„ ë¦¬ìŠ¤ë„ˆë¥¼ ë¶€ì°©í•˜ì
 	  pt.btPlus.addActionListener(my);
 	  pt.btMinus.addActionListener(my);
 	  pt.btClear.addActionListener(my);
@@ -60,28 +60,28 @@ public class MyDrawing extends JFrame {
 	  pt.btColor.addActionListener(my);
 	  pt.btClose.addActionListener(my);
 	    
-	  //ÀÌ¹ø¿¡´Â ¸ŞÀÎ¿¡¼­ ¾ÈÇÏ°í »ı¼ºÀÚ¿¡¼­ ÇÑ´Ù
+	  //Generator
 	  setSize(500,500);
 	  setVisible(true);
 	  this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	  
 	 }
 	 
-	 /*ÀÌº¥Æ®¼Ò½º: Äµ¹ö½º
-	  * ÀÌº¥Æ®: MouseEvent
-	  * ÀÌº¥Æ® ÇÚµé·¯: MouseMotionListener¸¦ ±¸Çö
+	 /*ì´ë²¤íŠ¸ì†ŒìŠ¤: ìº”ë²„ìŠ¤
+	  * ì´ë²¤íŠ¸: MouseEvent
+	  * ì´ë²¤íŠ¸ í•¸ë“¤ëŸ¬: MouseMotionListenerë¥¼ êµ¬í˜„
 	  * */
 	 
 	 class MyHandler implements MouseMotionListener, ActionListener{
 	  
 	  public void mouseDragged(MouseEvent e){
 	   setTitle("Drag");
-	   //¸¶¿ì½º¸¦ µå·¡±×ÇÑ ÁöÁ¡ÀÇ xÁÂÇ¥,yÁÂÇ¥¸¦ ¾ò¾î¿Í¼­ canÀÇ x,y ÁÂÇ¥°ª¿¡ Àü´ŞÇÑ´Ù.
+	   //ë§ˆìš°ìŠ¤ë¥¼ ë“œë˜ê·¸í•œ ì§€ì ì˜ xì¢Œí‘œ,yì¢Œí‘œë¥¼ ì–»ì–´ì™€ì„œ canì˜ x,y ì¢Œí‘œê°’ì— ì „ë‹¬í•œë‹¤.
 	   int xx=e.getX(); int yy=e.getY();
 	   setTitle("xx="+xx+", yy"+yy);
 	   ((MyCanvas)can).x=xx; ((MyCanvas)can).y=yy;
 	   
-	   //paint()´Â JVMÀÌ È£ÃâÇØÁÖ´Â ¸Ş¼ÒµåÀ¸·Î º¯°æx, repaintÀ» ½á¼­ Àç»ç¿ëÇÏÀÚ
+	   //paint()ëŠ” JVMì´ í˜¸ì¶œí•´ì£¼ëŠ” ë©”ì†Œë“œìœ¼ë¡œ ë³€ê²½x, repaintì„ ì¨ì„œ ì¬ì‚¬ìš©í•˜ì
 	   can.repaint();
 	   
 	  }
@@ -100,53 +100,53 @@ public class MyDrawing extends JFrame {
 	   }else if(o==btB){
 	    can2.cr=Color.blue;
 	   }else if(o==btOpen){
-	    // »õ·Î¿î 'paintToolJframe' »ı¼ºÇØ¼­ Ã¢ ¿­±â
-	    //PaintToolFrame pt = new PaintToolFrame(); ¿©±â¼­ ÄÚµå ³ÖÀ¸¸é ¸Å¹ø ÇÁ·¹ÀÓ »ı¼º ¤Ì
+	    // ìƒˆë¡œìš´ 'paintToolJframe' ìƒì„±í•´ì„œ ì°½ ì—´ê¸°
+	    //PaintToolFrame pt = new PaintToolFrame(); ì—¬ê¸°ì„œ ì½”ë“œ ë„£ìœ¼ë©´ ë§¤ë²ˆ í”„ë ˆì„ ìƒì„± 
 	    //pt.setSize(400, 400);
-	    pt.pack(); // Å©±â¸¦ ¾ĞÃàÇØ¼­ º¸¿©ÁÜ
-	    pt.setLocation(getWidth(),0); //xÃà¸¸Å­ ¿À¸¥ÂÊÀ¸·Î Ã¢ ÀÌµ¿
+	    pt.pack(); // í¬ê¸°ë¥¼ ì••ì¶•í•´ì„œ ë³´ì—¬ì¤Œ
+	    pt.setLocation(getWidth(),0); //xì¶•ë§Œí¼ ì˜¤ë¥¸ìª½ìœ¼ë¡œ ì°½ ì´ë™
 	    pt.setVisible(true);
 	   }else if(o==pt.btPlus){
 	    can2.w +=10; can2.h+=10;
 	   }else if(o==pt.btMinus){
-	    if(can2.w>3){ // ¹öÆ°À» °è¼Ó ´©¸£¸é ¾Æ¿¹ ¾È³ª¿È. ÃÖ¼ÒÇÑÀÇ Å©±â ¼³Á¤
+	    if(can2.w>3){ // ë²„íŠ¼ì„ ê³„ì† ëˆ„ë¥´ë©´ ì•„ì˜ˆ ì•ˆë‚˜ì˜´. ìµœì†Œí•œì˜ í¬ê¸° ì„¤ì •
 	     can2.w -= 10; can2.h -= 10; 
 	    }
 	   }else if(o==pt.btClear)
-	    // µå·¡±×ÇÑ ÁöÁ¡¸¸ ºÎºĞ Áö¿ì±â
+	    // ë“œë˜ê·¸í•œ ì§€ì ë§Œ ë¶€ë¶„ ì§€ìš°ê¸°
 	    can2.cr=can.getBackground();
 	   }else if(o==pt.btAllClear){
-	    // Äµ¹ö½º¸¦ ¸ğµÎ Áö¿ì±â
-	    // Graphics Å¬·¡½ºÀÇ clearRect(x,y,w,h)
+	    // ìº”ë²„ìŠ¤ë¥¼ ëª¨ë‘ ì§€ìš°ê¸°
+	    // Graphics í´ë˜ìŠ¤ì˜ clearRect(x,y,w,h)
 	    Graphics g=can2.getGraphics();
 	    g.clearRect(0, 0, can.getWidth(), can.getHeight()); 
 	   }else if(o==pt.btColor){
-	    // (Swing¿¡ ÀÖÀ½) JColorChooser¸¦ ¶ç¿ö¼­ ¼±ÅÃÇÑ »ö»óÀ¸·Î ±×·ÁÁöµµ·Ï
-	    Color selCr = JColorChooser.showDialog(null, "»ö¼±Á¤", Color.blue); // null=½ºÅ©¸° Áß¾Ó¿¡ È­¸é ³ª¿È
+	    // (Swingì— ìˆìŒ) JColorChooserë¥¼ ë„ì›Œì„œ ì„ íƒí•œ ìƒ‰ìƒìœ¼ë¡œ ê·¸ë ¤ì§€ë„ë¡
+	    Color selCr = JColorChooser.showDialog(null, "ìƒ‰ì„ ì •", Color.blue); // null=ìŠ¤í¬ë¦° ì¤‘ì•™ì— í™”ë©´ ë‚˜ì˜´
 	    can2.cr=selCr; 
 	   }else if(o==pt.btClose){
-	    // pt¸¸ ´İÇôÁöµµ·Ï
-	    //pt.setVisible(false);-> ´«¿¡ º¸ÀÌÁö ¾Ê´Â°ÍÀÏ»ÓÀÓ
-	    pt.dispose(); // ½Ã½ºÅÛ ÀÚ¿øÀ» ¹İ³³ÇØÁÜ
+	    // ptë§Œ ë‹«í˜€ì§€ë„ë¡
+	    //pt.setVisible(false);-> ëˆˆì— ë³´ì´ì§€ ì•ŠëŠ”ê²ƒì¼ë¿ì„
+	    pt.dispose(); // ì‹œìŠ¤í…œ ìì›ì„ ë°˜ë‚©í•´ì¤Œ
 	   }
 	  }
 	 }
 	 
 	 
 	 public static void main(String[] args) {
-	  new MyDrawing(); // »ı¼ºÀÚ ºÒ·¯¿À±â
+	  new MyDrawing(); // ìƒì„±ì ë¶ˆëŸ¬ì˜¤ê¸°
 	 }
 	}
 
 	public class MyCanvas extends Canvas {
 	 
-	 //Ã³À½¿¡ ±î¸¸»ö Á¡ ¾ÈÂïÈ÷°Ô ÇÏ±â À§ÇØ¼­ x,y -°ª ÁöÁ¤
+	 //ì²˜ìŒì— ê¹Œë§Œìƒ‰ ì  ì•ˆì°íˆê²Œ í•˜ê¸° ìœ„í•´ì„œ x,y -ê°’ ì§€ì •
 	 int x=-50; int y=-50; w=7; h=7;
 	 Color cr=Color.black;
 	 
 	 public void paint(Graphics g){
 	  g.setColor(cr);
-	  g.fillOval(x, y, w, h); // x, y ÁöÁ¡¿¡ 70,70 Å©±âÀÇ ¿ø ±×¸®±â
+	  g.fillOval(x, y, w, h); // x, y ì§€ì ì— 70,70 í¬ê¸°ì˜ ì› ê·¸ë¦¬ê¸°
 	 }
 	 
 	 @Override
@@ -168,12 +168,12 @@ public class MyDrawing extends JFrame {
 	  
 	  p=new JPanel();
 	  c.add(p, "Center");
-	  p.add(btPlus=new JButton("Å©°Ô"));
-	  p.add(btMinus=new JButton("ÀÛ°Ô"));
-	  p.add(btClear=new JButton("Áö¿ì±â"));
-	  p.add(btAllClear=new JButton("¸ğµÎÁö¿ì±â"));
-	  p.add(btColor=new JButton("»ö»ó"));
-	  p.add(btClose=new JButton("´İ±â"));
+	  p.add(btPlus=new JButton("í¬ê²Œ"));
+	  p.add(btMinus=new JButton("ì‘ê²Œ"));
+	  p.add(btClear=new JButton("ì§€ìš°ê¸°"));
+	  p.add(btAllClear=new JButton("ëª¨ë‘ì§€ìš°ê¸°"));
+	  p.add(btColor=new JButton("ìƒ‰ìƒ"));
+	  p.add(btClose=new JButton("ë‹«ê¸°"));
 	  
 	  
 	 }
